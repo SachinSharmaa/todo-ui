@@ -1,4 +1,4 @@
-import { HttpErrorService } from './../shared/config/http-error.service';
+import { HttpErrorService } from '../config/http-error.service';
 import { AuthService } from './../auth/auth.service';
 import { ActiveUser } from './../models/ActiveUser';
 import { Observable } from 'rxjs';

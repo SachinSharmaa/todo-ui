@@ -1,3 +1,4 @@
+import { MainService } from './main.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private  mainService: MainService) { }
 
   ngOnInit() {
+    this.mainService.getUser().subscribe(user => {
+      console.log(user);
+    },
+    error => {
+      console.error(error);
+    });
   }
 
 }
