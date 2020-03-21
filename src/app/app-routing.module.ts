@@ -1,3 +1,5 @@
+import { AppComponent } from './app.component';
+import { AuthGuard } from './auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -9,9 +11,10 @@ const routes: Routes = [
   },
   {
     path: 'main',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./main/main.module').then(m => m.MainModule)
   },
-  {path: '', redirectTo : '/login', pathMatch: 'full'},
+  {path: '', component: AppComponent, pathMatch: 'full'},
   {path: '**', redirectTo: '/login'}
 ];
 
