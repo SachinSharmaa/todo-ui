@@ -1,0 +1,20 @@
+<div class='list-wrapper container-fluid'>
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor='let task of tasks'
+      [ngClass]="{'disabled': task.done}">
+      <div class='list-data'>
+        <input type="checkbox" aria-label="Checkbox to mark done" [(ngModel)]='task.done' (change)='onUpdate(task)'
+          *ngIf='isToDO'>
+        {{task.name}}
+      </div>
+      <div class='list-buttons'>
+        <button class='list-button green' (click)='onRestore(task)' title='Restore' *ngIf='!isToDO'>
+          <fa-icon [icon]="faHistory"></fa-icon>
+        </button>
+        <button class='list-button red' (click)='onDelete(task)' title='{{deleteTitle}}'>
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>

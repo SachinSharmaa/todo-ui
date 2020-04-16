@@ -1,3 +1,5 @@
+import { Task } from './../models/Task';
+import { User } from './../models/User';
 import { MainService } from './main.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,15 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private  mainService: MainService) { }
+  activeUser: User;
+
+  constructor(private mainService: MainService) { }
 
   ngOnInit() {
     this.mainService.getUser().subscribe(user => {
-      console.log(user);
+      this.activeUser = user;
+      this.mainService.saveUser(this.activeUser);
     },
-    error => {
-      console.error(error);
-    });
+      error => {
+        console.error(error);
+      });
   }
 
 }

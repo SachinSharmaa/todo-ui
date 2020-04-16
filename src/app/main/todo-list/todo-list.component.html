@@ -1,0 +1,4 @@
+<div class='todo-wrapper'>
+  <app-list [tasks]='todoTasks' (deleteClicked)='moveToRecycleBin($event)' *ngIf='todoTasks'
+    (updateClicked)='updateDoneStatus($event)'></app-list>
+</div>

@@ -1,0 +1,4 @@
+<div class='recycle-bin-wrapper' *ngIf='deletedTasks'>
+  <app-list [tasks]='deletedTasks' (deleteClicked)='deleteTasks($event)' (restoreClicked)='restoreTask($event)'>
+  </app-list>
+</div>
